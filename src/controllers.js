@@ -1,18 +1,19 @@
 const bens = require("../bens.json")
 
-function autoIncrement(){
-    const ultimold = (bens[bens.length - 1].id)
-    return ultimold + 1;
+function autoIncremet(){
+    const ultimoId = Number(bens[bens.length - 1].id)
+    return ultimoId + 1;
 }
 
-const create = (req, res) => {
-    const dados = read.body
-    dados.id = autoIncrement()
-    bens.add(dados)
-    res.status(201).json(dados)
+//CRUDS
+const create = (req, res)=>{
+    const dados = req.body
+    dados.id = autoIncremet()
+    bens.push(dados)
+    res.redirect("http://127.0.0.1:5500/client/index.html")
 }
 
-const read = (req, res) => {
+const read = (req, res)=>{
     res.json(bens)
 }
 
